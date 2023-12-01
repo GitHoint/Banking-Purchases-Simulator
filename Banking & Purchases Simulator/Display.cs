@@ -10,6 +10,13 @@ namespace Banking___Purchases_Simulator
 {
     static class Display
     {
+
+        public static void ErrorReport()
+        {
+            Console.WriteLine("Error: Invalid command entered, please pick from the list above");
+            Console.Write("Press enter to continue...");
+            Console.ReadLine();
+        }
         public static void MainMenu()
         {
             Console.WriteLine("Banking & Purchases Simulator: \n");
@@ -41,12 +48,12 @@ namespace Banking___Purchases_Simulator
         public static void ProgramOptions(User user) 
         {
             Console.WriteLine("Banking & Purchases Simulator");
-            Console.WriteLine(HeaderStart() + "(" + user.username + ")" + HeaderEnd());
+            Console.WriteLine(HeaderStart() + "(" + user.Username + ")" + HeaderEnd());
             Console.WriteLine("  Options:");
             Console.WriteLine("  1. View/Manage Your Accounts.");
             Console.WriteLine("  2. Simulate Spending.");
             Console.WriteLine("  Type '-q' to logout.");
-            Console.WriteLine(HeaderStart() + HeaderFill(user.username) + HeaderEnd() + "\n");
+            Console.WriteLine(HeaderStart() + HeaderFill(user.Username) + HeaderEnd() + "\n");
         }
         public static void AccountsPage(Dictionary<int, Account> accountsToDisplay, string username) 
         {
@@ -69,7 +76,7 @@ namespace Banking___Purchases_Simulator
             Console.WriteLine(HeaderStart() + HeaderFill(username + "'s Accounts") + HeaderEnd());
             Console.WriteLine("  Options:");
             Console.WriteLine("  1. Open a new account.");
-            Console.WriteLine("  1. Select an account to manage.");
+            Console.WriteLine("  2. Select an account to manage.");
             Console.WriteLine("  Enter '-q' to exit.");
             Console.WriteLine(HeaderStart() + HeaderFill(username + "'s Accounts") + HeaderEnd() + "\n");
             

@@ -30,9 +30,9 @@ namespace Banking___Purchases_Simulator
         {
             foreach (var user in users)
             {
-                if (user.username == credentials.username)
+                if (user.Username == credentials.Username)
                 {
-                    if (user.password == credentials.password)
+                    if (user.Password == credentials.Password)
                     {
                         return true;
                     }
@@ -50,7 +50,7 @@ namespace Banking___Purchases_Simulator
         {
             foreach (var user in users)
             {
-                if (user.username == credentials.username && user.password == credentials.password)
+                if (user.Username == credentials.Username && user.Password == credentials.Password)
                 {
                     return user;
                 }
@@ -80,7 +80,7 @@ namespace Banking___Purchases_Simulator
         {
             foreach (var user in users)
             {
-                if (query.username == user.username)
+                if (query.Username == user.Username)
                 {
                     Console.WriteLine("A User already exists with this username, please pick another.");
                     Console.ReadLine();

@@ -36,7 +36,7 @@ void Login()
             {
                 if (LoginActions.CheckUserAlreadyExits(query, accounts) == false) 
                 {
-                    query.userAccounts = new List<Account>();
+                    query.UserAccounts = new List<Account>();
                     query.GenerateNewUserID(accounts);
                     accounts.Add(query);
                     currentUser = query;

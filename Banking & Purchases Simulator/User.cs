@@ -10,10 +10,10 @@ namespace Banking___Purchases_Simulator
     [Serializable]
     class User
     {
-        public int id { get; private set; }
-        public string username { get; }
-        public string password { get; }
-        public List<Account> userAccounts { set; get; }
+        private int id;
+        private string username;
+        private string password;
+        private List<Account> userAccounts;
 
         [JsonConstructor] private User(int id, string username, string password, List<Account> userAccounts)
         {
@@ -41,6 +41,28 @@ namespace Banking___Purchases_Simulator
                 }
             }
             this.id = id;
+        }
+
+        //Get & Set
+        [JsonInclude]
+        public int ID
+        {
+            get { return id; }
+        }
+        [JsonInclude]
+        public string Username
+        {
+            get { return username; }
+        }
+        [JsonInclude]
+        public string Password
+        {
+            get { return password; }
+        }
+        public List<Account> UserAccounts
+        {
+            get { return userAccounts; }
+            set { userAccounts = value; }
         }
     }
 }
