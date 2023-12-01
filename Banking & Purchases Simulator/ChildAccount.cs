@@ -10,10 +10,10 @@ namespace Banking___Purchases_Simulator
     [Serializable]
     class ChildAccount : Account
     {
-        public Account parentAccount { get; private set; }
-       
+        private Account parentAccount;
+
         [JsonConstructor]
-        public ChildAccount(Account parentAccount, int accNum, string accHolder) : base(accNum, accHolder) 
+        public ChildAccount(Account parentAccount, int accNum, string accHolder) : base(accNum, accHolder)
         {
             this.parentAccount = parentAccount;
             this.accNum = accNum;
@@ -21,5 +21,10 @@ namespace Banking___Purchases_Simulator
             accType = "Child Account";
         }
 
+        public Account ParentAccount
+        {
+            get { return parentAccount; }
+            set { parentAccount = value; }
+        }
     }
 }

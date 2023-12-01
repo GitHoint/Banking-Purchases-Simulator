@@ -61,8 +61,8 @@ namespace Banking___Purchases_Simulator
                 Console.WriteLine("  Your Accounts:");
                 foreach (var account in accountsToDisplay)
                 {
-                    string accType = account.Value.accType;
-                    string balance = account.Value.balance.ToString("C", CultureInfo.CurrentCulture);
+                    string accType = account.Value.AccType;
+                    string balance = account.Value.Balance.ToString("C", CultureInfo.CurrentCulture);
                     Console.WriteLine("  " + account.Key + ". " + accType + " :: { Balance: " + balance + " }");
                 }
             }
@@ -76,9 +76,9 @@ namespace Banking___Purchases_Simulator
         }
         public static void ManageAnAccount(Account acc) 
         {
-            Console.WriteLine(HeaderStart() + "(" + acc.accType + ")" + HeaderEnd());
+            Console.WriteLine(HeaderStart() + "(" + acc.AccType + ")" + HeaderEnd());
             Console.WriteLine("  Details: ");
-            Console.WriteLine("  - Current Balance: {" + acc.balance.ToString("C", CultureInfo.CurrentCulture) + " }");
+            Console.WriteLine("  - Current Balance: {" + acc.Balance.ToString("C", CultureInfo.CurrentCulture) + " }");
             Console.WriteLine("  Options: ");
             Console.WriteLine("  1. Withdraw.");
             Console.WriteLine("  2. Deposit.");
@@ -88,7 +88,7 @@ namespace Banking___Purchases_Simulator
             Console.WriteLine("  5. Close Account.");
             Console.ResetColor();
             Console.WriteLine("  Enter '-q' to exit.");
-            Console.WriteLine(HeaderStart() + HeaderFill(acc.accType) + HeaderEnd() + "\n");
+            Console.WriteLine(HeaderStart() + HeaderFill(acc.AccType) + HeaderEnd() + "\n");
         }
         public static void SimulationPage(User user) { }
         private static string HeaderStart()

@@ -10,10 +10,10 @@ namespace Banking___Purchases_Simulator
     [Serializable]
     class Transaction
     {
-        public string type { get; }
-        public int amount { get; }
-        public int balanceBefore { get; }
-        public int balanceAfter { get; }
+        private string type;
+        private int amount;
+        private int balanceBefore;
+        private int balanceAfter;
 
         [JsonConstructor]
         public Transaction(string type, int amount, int balanceBefore, int balanceAfter)
@@ -22,6 +22,27 @@ namespace Banking___Purchases_Simulator
             this.amount = amount;
             this.balanceBefore = balanceBefore;
             this.balanceAfter = balanceAfter;
+        }
+
+        [JsonInclude]
+        public string Type
+        {
+            get { return type; }
+        }
+        [JsonInclude]
+        public int Amount
+        {
+            get { return amount; }
+        }
+        [JsonInclude]
+        public int BalanceBefore
+        {
+            get { return balanceBefore; }
+        }
+        [JsonInclude]
+        public int BalanceAfter
+        {
+            get { return balanceAfter; }
         }
     }
 }

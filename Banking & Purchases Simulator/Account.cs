@@ -11,14 +11,15 @@ namespace Banking___Purchases_Simulator
     [Serializable]
     class Account
     {
-        public int userID { get; protected set; }
-        public int accNum { get; protected set; }
-        public string accHolder { get; protected set; }
-        public float balance { get; protected set; }
-        public string accType { get; protected set; }
-        public List<Transaction> history { get; protected set; }
+        protected int userID;
+        protected int accNum;
+        protected string accHolder;
+        protected float balance;
+        protected string accType;
+        protected List<Transaction> history;
 
-        [JsonConstructor] private Account(int userID, int accNum, string accHolder, int balance, string accType, List<Transaction> history)
+        [JsonConstructor]
+        private Account(int userID, int accNum, string accHolder, int balance, string accType, List<Transaction> history)
         {
             this.userID = userID;
             this.accNum = accNum;
@@ -47,5 +48,38 @@ namespace Banking___Purchases_Simulator
         //public virtual bool Withdraw(int amount) { }
         public void Deposit(int amount) { }
         public void CreateStatement() { }
+
+        //Get & Set
+
+        [JsonInclude]
+        public int UserID
+        {
+            get { return userID; }
+        }
+        [JsonInclude]
+        public int AccNum
+        {
+            get { return accNum; }
+        }
+        [JsonInclude]
+        public string AccHolder
+        {
+            get { return accHolder; }
+        }
+        public float Balance
+        {
+            get { return balance; }
+            set { balance = value; }
+        }
+        public string AccType
+        {
+            get { return accType; }
+            set { accType = value; }
+        }
+        public List<Transaction> History
+        {
+            get { return history; }
+            set { history = value; }
+        }
     }
 }
