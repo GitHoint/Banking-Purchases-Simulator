@@ -1,2 +1,2 @@
-# Banking-Purchases-Simulator
+# Banking & Purchases Simulator
 Software Projects Assignment
