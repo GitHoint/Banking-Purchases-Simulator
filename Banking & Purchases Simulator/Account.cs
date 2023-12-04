@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
+using System.Globalization;
 using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Banking___Purchases_Simulator
 {
@@ -45,9 +44,36 @@ namespace Banking___Purchases_Simulator
 
         //Functions
 
-        //public virtual bool Withdraw(int amount) { }
-        public void Deposit(int amount) { }
-        public void CreateStatement() { }
+        public virtual bool Withdraw(float amount) 
+        {
+            if (balance < amount) return false;
+            float pre = balance;
+            balance -= amount;
+            history.Add(new Transaction("Withdraw", amount, pre, balance));
+            return true;
+        }
+        public void Deposit(float amount) 
+        {
+            float pre = balance;
+            balance += amount;
+            history.Add(new Transaction("Deposit", amount, pre, balance));
+            
+        }
+        public void CreateStatement() 
+        {
+            Console.Clear();
+            Console.WriteLine("<[=----------");
+            Console.WriteLine("(" + AccType + ")");
+            Console.WriteLine("----------=]>\n");
+            foreach (Transaction transaction in history)
+            {
+                Console.WriteLine(transaction.Type + " Amount: " + transaction.Amount.ToString("C", CultureInfo.CurrentCulture) + ".");
+                Console.WriteLine("Balance Before: " + transaction.BalanceBefore.ToString("C", CultureInfo.CurrentCulture) + ". Balance After: " + transaction.BalanceAfter.ToString("C", CultureInfo.CurrentCulture) + ".\n");
+            }
+            Console.WriteLine("<[=--------------------=]>");
+            Console.WriteLine("Press enter to continue...");
+            Console.ReadLine();
+        }
 
         //Get & Set
 
