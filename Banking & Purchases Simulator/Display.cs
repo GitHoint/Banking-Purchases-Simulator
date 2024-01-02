@@ -87,8 +87,8 @@ namespace Banking___Purchases_Simulator
             Console.WriteLine("  Details: ");
             Console.WriteLine("  - Current Balance: {" + acc.Balance.ToString("C", CultureInfo.CurrentCulture) + " }");
             Console.WriteLine("  Options: ");
-            Console.WriteLine("  1. Withdraw.");
-            Console.WriteLine("  2. Deposit.");
+            Console.WriteLine("  1. Deposit.");
+            Console.WriteLine("  2. Withdraw.");
             Console.WriteLine("  3. Create A Statement.");
             Console.WriteLine("  4. Transfer funds to another account.");
             Console.ForegroundColor = ConsoleColor.DarkRed;

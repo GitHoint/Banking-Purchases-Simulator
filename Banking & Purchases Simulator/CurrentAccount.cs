@@ -10,7 +10,7 @@ namespace Banking___Purchases_Simulator
     [Serializable]
     class CurrentAccount : Account
     {
-        private int overdraftLimit;
+        private float overdraftLimit;
 
         [JsonConstructor]
         public CurrentAccount(int accNum, string accHolder, int overdraftLimit) : base(accNum, accHolder)
@@ -25,7 +25,7 @@ namespace Banking___Purchases_Simulator
 
         //public override bool Withdraw(int amount) { }
 
-        public int OverDraftLimit
+        public float OverDraftLimit
         {
             get { return overdraftLimit; }
             set { overdraftLimit = value; }

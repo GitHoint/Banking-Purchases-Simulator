@@ -13,9 +13,9 @@ namespace Banking___Purchases_Simulator
         protected int userID;
         protected int accNum;
         protected string accHolder;
-        protected float balance;
+        protected double balance;
         protected string accType;
-        protected List<Transaction> history;
+        protected List<Transaction> history = new List<Transaction>();
 
         [JsonConstructor]
         private Account(int userID, int accNum, string accHolder, int balance, string accType, List<Transaction> history)
@@ -44,17 +44,17 @@ namespace Banking___Purchases_Simulator
 
         //Functions
 
-        public virtual bool Withdraw(float amount) 
+        public virtual bool Withdraw(double amount) 
         {
             if (balance < amount) return false;
-            float pre = balance;
+            double pre = balance;
             balance -= amount;
             history.Add(new Transaction("Withdraw", amount, pre, balance));
             return true;
         }
-        public void Deposit(float amount) 
+        public void Deposit(double amount) 
         {
-            float pre = balance;
+            double pre = balance;
             balance += amount;
             history.Add(new Transaction("Deposit", amount, pre, balance));
             
@@ -92,7 +92,7 @@ namespace Banking___Purchases_Simulator
         {
             get { return accHolder; }
         }
-        public float Balance
+        public double Balance
         {
             get { return balance; }
             set { balance = value; }

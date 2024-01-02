@@ -11,12 +11,12 @@ namespace Banking___Purchases_Simulator
     class Transaction
     {
         private string type;
-        private float amount;
-        private float balanceBefore;
-        private float balanceAfter;
+        private double amount;
+        private double balanceBefore;
+        private double balanceAfter;
 
         [JsonConstructor]
-        public Transaction(string type, float amount, float balanceBefore, float balanceAfter)
+        public Transaction(string type, double amount, double balanceBefore, double balanceAfter)
         {
             this.type = type;
             this.amount = amount;
@@ -30,17 +30,17 @@ namespace Banking___Purchases_Simulator
             get { return type; }
         }
         [JsonInclude]
-        public float Amount
+        public double Amount
         {
             get { return amount; }
         }
         [JsonInclude]
-        public float BalanceBefore
+        public double BalanceBefore
         {
             get { return balanceBefore; }
         }
         [JsonInclude]
-        public float BalanceAfter
+        public double BalanceAfter
         {
             get { return balanceAfter; }
         }

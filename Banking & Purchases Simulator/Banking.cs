@@ -11,14 +11,14 @@ namespace Banking___Purchases_Simulator
     {
         public static User LoadBankingPage(User user)
         {
-            int key = 0;
-            Dictionary<int, Account> displayQuery = user.UserAccounts.ToDictionary(acc => key++);
-            Console.Clear();
-            Display.AccountsPage(displayQuery, user.Username);
             //To-Do
             //2 Options - Create new Account, Manage Account
             while (true)
             {
+                int key = 0;
+                Dictionary<int, Account> displayQuery = user.UserAccounts.ToDictionary(acc => key++);
+                Console.Clear();
+                Display.AccountsPage(displayQuery, user.Username);
                 Console.Write("Enter A Command (1/2): ");
                 string command = Console.ReadLine().Trim().ToLower();
                 if (command == "-q")
@@ -31,7 +31,7 @@ namespace Banking___Purchases_Simulator
                     switch (code)
                     {
                         case 1:
-                            CreateNewAccount();
+                            user.UserAccounts = CreateNewAccount(user);
                             break;
                         case 2:
                             user.UserAccounts = PickAccountToManage(displayQuery, user.Username);
@@ -45,9 +45,37 @@ namespace Banking___Purchases_Simulator
             }
         }
 
-        private static void CreateNewAccount()
+        private static List<Account> CreateNewAccount(User user)
         {
-
+            while (true)
+            {
+                Console.Write("Enter the account type (type 'curr' for current account): ");
+                string accType = Console.ReadLine().Trim();
+                if (accType == "-q")
+                {
+                    return user.UserAccounts;
+                }
+                int newid = user.UserAccounts.Count + 1;
+                if (accType == "curr")
+                {
+                    Console.Write("Enter overdraft limit: ");
+                    try
+                    {
+                        int limit = Convert.ToInt32(Console.ReadLine());
+                        user.UserAccounts.Add(new CurrentAccount(newid, user.Username, limit));
+                        return user.UserAccounts;
+                    }
+                    catch
+                    {
+                        Display.ErrorReport();
+                    }
+                }
+                else
+                {
+                    user.UserAccounts.Add(new Account(newid, user.Username, accType));
+                    return user.UserAccounts;
+                }
+            }
         }
 
         private static List<Account> PickAccountToManage(Dictionary<int, Account> accDict, string username)
