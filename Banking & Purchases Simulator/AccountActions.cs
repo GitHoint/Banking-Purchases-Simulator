@@ -70,7 +70,39 @@ namespace Banking___Purchases_Simulator
         {
             while (true)
             {
-                Console.WriteLine("");
+                Console.Clear();
+                Display.TransferPage(accList);
+                Console.Write("Select account to transfer to: ");
+                string code = Console.ReadLine().Trim().ToLower();
+                if (code == "-q")
+                {
+                    return accList;
+                }
+                try
+                {
+                    int selected = Convert.ToInt32(code);
+                    if (accList.ContainsKey(selected))
+                    {
+                        if (selected != ID)
+                        {
+                            if (ProcessTransfer(accList, ID, selected) == true)
+                            {
+                                return accList;
+                            }
+                        }
+                        else
+                        {
+                            Console.Write("Error: Cannot transfer funds to the same account, press enter to continue...");
+                            Console.ReadLine();
+                        }
+                    }
+                    else
+                    {
+                        Console.Write("Account not found, press enter to continue...");
+                        Console.ReadLine();
+                    }
+                }
+                catch { Display.ErrorReport(); }
             }
         }
         public static Dictionary<int, Account> CloseAccount(Dictionary<int, Account> accList, int ID) 
@@ -105,6 +137,33 @@ namespace Banking___Purchases_Simulator
                     Console.ReadLine();
                     return accList;
                 }
+            }
+        }
+
+        private static bool ProcessTransfer(Dictionary<int, Account> accList, int ID, int selected)
+        {
+            Console.Write("Enter amount to transfer: ");
+            try
+            {
+                double value = Convert.ToDouble(Console.ReadLine());
+                if (accList[ID].Balance < value)
+                {
+                    Console.Write("Insufficient Funds, press enter to continue...");
+                    Console.ReadLine();
+                    return false;
+                }
+                else
+                {
+                    accList[ID].Withdraw(value);
+                    accList[selected].Deposit(value);
+                    return true;
+                }
+
+            }
+            catch
+            {
+                Display.ErrorReport();
+                return false;
             }
         }
 

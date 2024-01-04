@@ -116,5 +116,26 @@ namespace Banking___Purchases_Simulator
             output += "--"; //For brackets
             return output;
         }
+        public static void TransferPage(Dictionary<int, Account> accList)
+        {
+            Console.WriteLine("Banking & Purchases Simulator");
+            Console.WriteLine(HeaderStart() + "(Transfer)" + HeaderEnd());
+            if (accList.Count == 0)
+            {
+                Console.WriteLine("  No Accounts.");
+            }
+            else
+            {
+                Console.WriteLine("  Your Accounts:");
+                foreach (var account in accList)
+                {
+                    string accType = account.Value.AccType;
+                    string balance = account.Value.Balance.ToString("C", CultureInfo.CurrentCulture);
+                    Console.WriteLine("  " + account.Key + ". " + accType + " :: { Balance: " + balance + " }");
+                }
+            }
+            Console.WriteLine("  Enter '-q' to exit.");
+            Console.WriteLine(HeaderStart() + HeaderFill("Transfer") + HeaderEnd());
+        }
     }
 }

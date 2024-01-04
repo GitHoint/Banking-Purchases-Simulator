@@ -57,7 +57,16 @@ while (session)
     if (command == "-q")
     {
         session = false;
-        
+        foreach (User user in accounts)
+        {
+            if (user.ID == currentUser.ID)
+            {
+                accounts[accounts.IndexOf(user)] = currentUser;
+                break;
+            }
+        }
+        Actions.UploadJsonData(accounts);
+        break;
     }
     try
     {
