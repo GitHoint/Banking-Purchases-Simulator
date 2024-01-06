@@ -62,9 +62,9 @@ namespace Banking___Purchases_Simulator
         public void CreateStatement() 
         {
             Console.Clear();
-            Console.WriteLine("<[=----------");
-            Console.WriteLine("(" + AccType + ")");
-            Console.WriteLine("----------=]>\n");
+            Console.Write("<[=----------");
+            Console.Write("(" + AccType + ")");
+            Console.Write("----------=]>\n");
             foreach (Transaction transaction in history)
             {
                 Console.WriteLine(transaction.Type + " Amount: " + transaction.Amount.ToString("C", CultureInfo.CurrentCulture) + ".");

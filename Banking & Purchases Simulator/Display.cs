@@ -97,7 +97,38 @@ namespace Banking___Purchases_Simulator
             Console.WriteLine("  Enter '-q' to exit.");
             Console.WriteLine(HeaderStart() + HeaderFill(acc.AccType) + HeaderEnd() + "\n");
         }
-        public static void SimulationPage(User user) { }
+        public static void SimulationPage(Dictionary<int, Account> accounts) 
+        {
+            Console.WriteLine(HeaderStart() + "(Spending Simulator)" + HeaderEnd());
+            if (accounts.Count == 0)
+            {
+                Console.WriteLine("  No Accounts.");
+            }
+            else
+            {
+                Console.WriteLine("  Your Accounts:");
+                foreach (var account in accounts)
+                {
+                    string accType = account.Value.AccType;
+                    string balance = account.Value.Balance.ToString("C", CultureInfo.CurrentCulture);
+                    Console.WriteLine("  " + account.Key + ". " + accType + " :: { Balance: " + balance + " }");
+                }
+            }
+            Console.WriteLine("  Enter '-q' to exit.");
+            Console.WriteLine(HeaderStart() + HeaderFill("Spending Simulator") + HeaderEnd() + "\n");
+
+        }
+        public static void SimulatorActive(Account acc)
+        {
+            Console.WriteLine(HeaderStart() + "(" + acc.AccType + ")" + HeaderEnd());
+            Console.WriteLine("  - Current Balance: {" + acc.Balance.ToString("C", CultureInfo.CurrentCulture) + " }");
+            Console.WriteLine(HeaderStart() + HeaderFill(acc.AccType) + HeaderEnd());
+            Console.WriteLine("  Controls:");
+            Console.WriteLine("  1. Confirm.");
+            Console.WriteLine("  2. Skip.");
+            Console.WriteLine("  Enter '-q' to exit.");
+            Console.WriteLine(HeaderStart() + HeaderFill(acc.AccType) + HeaderEnd() + "\n");
+        }
         private static string HeaderStart()
         {
             return "<[=----------";

@@ -14,12 +14,12 @@ namespace Banking___Purchases_Simulator
         public static void UploadJsonData(List<User> users)
         {
             string jsonWrite = JsonSerializer.Serialize(users);
-            File.WriteAllText("usersJson.txt", jsonWrite);
+            File.WriteAllText("usersJson.json", jsonWrite);
         }
 
         public static List<User> LoadJsonData()
         {
-            string jsonRead = File.ReadAllText("usersJson.txt");
+            string jsonRead = File.ReadAllText("usersJson.json");
             try
             {
                 List<User> result = JsonSerializer.Deserialize<List<User>>(jsonRead);
